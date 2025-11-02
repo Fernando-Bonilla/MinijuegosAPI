@@ -14,7 +14,7 @@ namespace MinijuegosAPI.Controllers
         // mapa mental:
         // La Controller tiene los endopoints
         // El get recibe el tipo ej: "Logica"
-        // El get con ese parametro tipo, llama al Servicio "GenerarPregunta(tipo)"
+        // El get con ese parametro tipo, llama al factory  ObtenerEstrategia(string tipo) aca usamos factory para segun lo que viene la estrategia que hay q usar
         // el Service le pide al Factory que Strategy necesita para ese tipo, es decir, siempre vamos a generar un objeto Tipo Pregunta pero la strategy nos va a decir como armar esa pregunta
 
         [HttpGet("pregunta")]
