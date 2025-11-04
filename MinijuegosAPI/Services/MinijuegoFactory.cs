@@ -1,35 +1,37 @@
 ﻿using MinijuegosAPI.Interfaces;
+using MinijuegosAPI.Data;
+using MinijuegosAPI.Services;
 
 namespace MinijuegosAPI.Services
 {
-    public class MinijuegoFactory : IMinijuegoFactory
+    public class MiniJuegoFactory : IMiniJuegoFactory
     {
-        private readonly IMinijuegoStrategy _matematica;
-        private readonly IMinijuegoStrategy _logica;
-        private readonly IMinijuegoStrategy _memoria;
-        public MinijuegoFactory(IMinijuegoStrategy matematica, IMinijuegoStrategy logica, IMinijuegoStrategy memoria) 
-        { 
-            _matematica = matematica;
-            _logica = logica;
-            _memoria = memoria;
+        private readonly ApplicationDbContext _context;
+
+        public MiniJuegoFactory(ApplicationDbContext context)
+        {
+            _context = context;
         }
 
-        public IMinijuegoStrategy Obtener( string tipo)
+
+        public IMiniJuego GenerarMiniJuego(string tipo)
         {
-            if (tipo == null) 
+            if (tipo == null)
             {
-                throw new ArgumentNullException("El tipo es requerido.", nameof(tipo));
+                throw new ArgumentNullException(nameof(tipo));
             }
 
             if(tipo == "matematica")
             {
-                return _matematica;
-            }else if ( tipo == "logica")
+                return new MiniJuegoMatematica(_context);
+            }
+            else if (tipo == "logica")
             {
-                return _logica;
-            }else
+                return new MiniJuegoLogica(_context);
+            }
+            else
             {
-                return _memoria;
+                return new MiniJuegoMemoria(_context);
             }
         }
     }

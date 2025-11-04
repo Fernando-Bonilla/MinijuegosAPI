@@ -1,10 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using MinijuegosAPI.Data;
+using MinijuegosAPI.Interfaces;
+using MinijuegosAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configuracion conexion a la base de datos
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//builder.Services.AddTransient<IMinijuegoFactory, MiniJuegoFactory>();
+
 
 // Add services to the container.
 

@@ -1,7 +1,10 @@
-﻿namespace MinijuegosAPI.Interfaces
+﻿using MinijuegosAPI.Interfaces;
+
+namespace MinijuegosAPI.Interfaces
 {
-    public interface IMinijuegoFactory
+    public interface IMiniJuegoFactory 
     {
-        IMinijuegoStrategy Obtener(string tipo); // este factory va a decidir que tipo de strategy usamos segun el tipo de minijuego q recibe, las clases que implementa esta interfaz
+        public IMiniJuego GenerarMiniJuego(string tipo);
+        
     }
 }
