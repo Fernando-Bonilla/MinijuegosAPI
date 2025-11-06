@@ -14,11 +14,7 @@ namespace MinijuegosAPI.Controllers
         public MinijuegosController(ApplicationDbContext context)
         {
             _context = context;
-        }
-        /*public IActionResult Index()
-        {
-            return View();
-        }*/
+        }        
 
         // mapa mental:
         // La Controller tiene los endopoints
@@ -29,13 +25,16 @@ namespace MinijuegosAPI.Controllers
         [HttpGet("pregunta")]
         public ActionResult<Pregunta> pregunta(string tipo) 
         {
-            tipo = "logica";
+            if (tipo == null) 
+            {
+                return BadRequest();
+            }
+            
             MiniJuegoFactory factory = new MiniJuegoFactory(_context); // aca ocurre la magia, el factory esta acaaaaaa
             IMiniJuego juego = factory.GenerarMiniJuego(tipo);
             Pregunta pregunta = juego.GenerarPregunta();
 
             return Ok(pregunta);
-
         }
 
         /*[HttpPost]

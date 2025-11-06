@@ -6,7 +6,6 @@ using System.Data;
 using MinijuegosAPI.Data;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace MinijuegosAPI.Services{
     
     public class MiniJuegoLogica : IMiniJuego
@@ -17,12 +16,7 @@ namespace MinijuegosAPI.Services{
             _context = context;
         }
         public Pregunta GenerarPregunta()
-        {
-            // Pregunta tiene
-            //id
-            //Tipo
-            //Codigo
-            //CuerpoPregunta => preciso: SecuencaNumeros, pregunta
+        {           
 
             JuegoLogicaDTO juego = CrearJuegoDeLogica();
 
@@ -35,26 +29,19 @@ namespace MinijuegosAPI.Services{
 
             string json = JsonSerializer.Serialize(cuerpoPregunta, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
-            Pregunta pregunta = new Pregunta 
+            Pregunta pregunta = new Pregunta
             {
-                Tipo = juego.TipoPregunta,
+                Tipo = "Logica",
                 Codigo = juego.CodigoPregunta,
                 CuerpoPregunta = json,
             };
 
-            GuardarPregunta(pregunta);
+            _context.Preguntas.Add(pregunta);
+            _context.SaveChanges();             
             
             return pregunta;
         }
-
-        public async Task<Pregunta> GuardarPregunta(Pregunta pregunta)
-        {
-            await _context.Preguntas.AddAsync(pregunta);
-            await _context.SaveChangesAsync();
-
-            return pregunta;
-        }
-
+       
         public static JuegoLogicaDTO CrearJuegoDeLogica()
         {
             JuegoLogicaDTO juego = new JuegoLogicaDTO();
