@@ -14,8 +14,10 @@ namespace MinijuegosAPI.Services
         }
 
 
-        public IMiniJuego GenerarMiniJuego(string tipo)
+        public IMiniJuego? GenerarMiniJuego(string tipo)
         {
+            tipo = tipo.Trim().ToLower();
+
             if (tipo == null)
             {
                 throw new ArgumentNullException(nameof(tipo));
@@ -29,9 +31,13 @@ namespace MinijuegosAPI.Services
             {
                 return new MiniJuegoLogica(_context);
             }
-            else
+            else if (tipo == "memoria")
             {
                 return new MiniJuegoMemoria(_context);
+            }
+            else
+            {
+                return null;
             }
         }
     }

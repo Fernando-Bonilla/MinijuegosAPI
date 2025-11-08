@@ -38,17 +38,28 @@ namespace MinijuegosAPI.Controllers
         }*/
 
         [HttpGet("pregunta")]
-        public ActionResult<Object> pregunta(string tipo)
+        public ActionResult<Object> pregunta(string? tipo)
         {
-            if (tipo == null)
+            if (string.IsNullOrEmpty(tipo))
             {
-                return BadRequest();
+                return BadRequest(new { Mensaje = "El Parametro tipo es requerido" });
             }
 
             MiniJuegoFactory factory = new MiniJuegoFactory(_context); // aca ocurre la magia, el factory esta acaaaaaa
             IMiniJuego juego = factory.GenerarMiniJuego(tipo);
+
+            if (juego == null)
+            {
+                return BadRequest(new { Mensaje = $"El tipo {tipo} no es valido" });
+            }
+
             Pregunta pregunta = juego.GenerarPregunta();
 
+            if (pregunta == null || string.IsNullOrEmpty(pregunta.CuerpoPregunta))
+            {                
+                return StatusCode(500, new {Mensje = "No se pudo generar la pregunta"});
+            }
+            
             // aca no me dio la cabeza para hacer el strategy y para poder devolver un solo tipo de dto acorde al tipo de pregunta arme el metodo mapear, que arma el dto
             // con los datos que precisa la vista y lo devolvemos como objeto nomas.
             // Despues habria que hacerlo bien pero por ahora es un strategy rustico como la tota Lugano
