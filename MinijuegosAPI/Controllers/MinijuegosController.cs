@@ -105,6 +105,22 @@ namespace MinijuegosAPI.Controllers
 
                 return juegoMemoriaRes;
             }
+            else if(p.Tipo == "Matematica")
+            {
+                CuerpoLogica cuerpoPreg = JsonSerializer.Deserialize<CuerpoLogica>(p.CuerpoPregunta);
+
+                JuegoMatematicaResponseDTO juegoMatematicaRes = new JuegoMatematicaResponseDTO
+                {
+                    Id = p.Id,
+                    TipoPregunta = p.Tipo,
+                    Secuencia = cuerpoPreg.SecuenciaNumeros,
+                    Pregunta = cuerpoPreg.Pregunta,                    
+                    FechaCreacion = p.FechaCreacion,
+                };
+
+                return juegoMatematicaRes;
+
+            }
 
             else
             {
