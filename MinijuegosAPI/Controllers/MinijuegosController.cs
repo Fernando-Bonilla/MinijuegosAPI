@@ -70,10 +70,12 @@ namespace MinijuegosAPI.Controllers
 
         public static object mapearDTOcorrecto(Pregunta p)
         {
-            CuerpoLogica cuerpoPreg = JsonSerializer.Deserialize<CuerpoLogica>(p.CuerpoPregunta);
+            //CuerpoLogica cuerpoPreg = JsonSerializer.Deserialize<CuerpoLogica>(p.CuerpoPregunta);
 
             if(p.Tipo == "Logica")
             {
+                CuerpoLogica cuerpoPreg = JsonSerializer.Deserialize<CuerpoLogica>(p.CuerpoPregunta);
+
                 JuegoLogicaResponseDTO juegoLogicaRes = new JuegoLogicaResponseDTO
                 {
                     Id = p.Id,
@@ -87,6 +89,23 @@ namespace MinijuegosAPI.Controllers
 
                 return juegoLogicaRes;
             }
+            else if (p.Tipo == "Memoria")
+            {
+                CuerpoLogica cuerpoPreg = JsonSerializer.Deserialize<CuerpoLogica>(p.CuerpoPregunta);
+
+                JuegoMemoriaResponseDTO juegoMemoriaRes = new JuegoMemoriaResponseDTO
+                {
+                    Id = p.Id,
+                    TipoPregunta = p.Tipo,
+                    Secuencia = cuerpoPreg.SecuenciaNumeros,
+                    Pregunta = cuerpoPreg.Pregunta,
+                    CodigoPregunta = p.Codigo,
+                    FechaCreacion = p.FechaCreacion,
+                };
+
+                return juegoMemoriaRes;
+            }
+
             else
             {
                 return new { };
