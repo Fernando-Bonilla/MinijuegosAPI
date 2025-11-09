@@ -3,6 +3,7 @@ using MinijuegosAPI.DTOs;
 using MinijuegosAPI.Interfaces;
 using MinijuegosAPI.Models;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace MinijuegosAPI.Services
 {
@@ -26,7 +27,7 @@ namespace MinijuegosAPI.Services
             };
 
             //string json = JsonSerializer.Serialize( cuerpoPregunta, new JsonSerializerOptions());
-            string json = JsonSerializer.Serialize(cuerpoPregunta, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            string json = JsonSerializer.Serialize(cuerpoPregunta, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }); // esto me facilita el tema del case sensitive
 
             Pregunta pregunta = new Pregunta
             {
@@ -59,8 +60,39 @@ namespace MinijuegosAPI.Services
         //sub clase anidada
         public class CuerpoMatematica
         {
+            [JsonPropertyName("secuenciaNumeros")]
             public int[] SecuenciaNumeros { get; set; } = Array.Empty<int>();
+
+            [JsonPropertyName("pregunta")]
             public string Pregunta { get; set; } = "";
+        }
+
+        public ResultadoValidacion ValidarRespuesta(Pregunta preg, string respuestaUsuario)
+        {
+
+            CuerpoMatematica cuerpoPregMatematica = JsonSerializer.Deserialize<CuerpoMatematica>(preg.CuerpoPregunta);  //new CuerpoMatematica();
+
+            // ========= esto despues tiene que ir en un metodo aparte pero por ahora va bala
+            int result = 0;
+            foreach (int num in cuerpoPregMatematica.SecuenciaNumeros)
+            {                
+                result += num;
+            }
+
+            bool elUserLeEmboco = result == int.Parse(respuestaUsuario);
+
+            string _mensaje = elUserLeEmboco == true ? "Bien Maquina del mal, tas re sarpado" : "No viejita, le erraste, seguí intentando";
+
+            ResultadoValidacion resultadoValidacion = new ResultadoValidacion
+            {
+                EsCorrecta = elUserLeEmboco,
+                Mensaje = _mensaje,
+                RespuestaCorrecta = result.ToString(),
+            };      
+      
+            // ========= End esto despues tiene que ir en un metodo aparte pero por ahora va bala
+
+            return resultadoValidacion;
         }
     }
 }

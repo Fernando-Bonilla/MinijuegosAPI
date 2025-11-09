@@ -17,25 +17,7 @@ namespace MinijuegosAPI.Controllers
         public MinijuegosController(ApplicationDbContext context)
         {
             _context = context;
-        }
-
-        // mapa mental: muerte cerebral hoy 05/11
-        // Factory implementado, ahora necesitaria implementar strategy para saber que tipo de pregunta devuelvo, ya que tienen distintos "cuerpos"
-
-        /*[HttpGet("pregunta")]
-        public ActionResult<Pregunta> pregunta(string tipo) 
-        {
-            if (tipo == null) 
-            {
-                return BadRequest();
-            }
-            
-            MiniJuegoFactory factory = new MiniJuegoFactory(_context); // aca ocurre la magia, el factory esta acaaaaaa
-            IMiniJuego juego = factory.GenerarMiniJuego(tipo);
-            Pregunta pregunta = juego.GenerarPregunta();
-
-            return Ok(pregunta);
-        }*/
+        }        
 
         [HttpGet("pregunta")]
         public ActionResult<Object> pregunta(string? tipo)
@@ -138,10 +120,43 @@ namespace MinijuegosAPI.Controllers
             public string Pregunta { get; set; } = "";
         }
 
-        /*[HttpPost]
-        public async Task<> validar()
+        [HttpPost("Validar")]
+        public ActionResult<ValidacionResponseDTO> Validar([FromBody] ValidacionRequestDTO dto)
         {
+            if (dto.Id == 0)
+            {
+                return BadRequest(new {Mensaje= $"Valor Id: {dto.Id} no valido, por favor ingrese un valor mayor a 0"});
+            }
 
-        }*/
+            Pregunta? pregunta = _context.Preguntas
+                .FirstOrDefault(p => p.Id == dto.Id);
+
+            if (pregunta == null)
+            {
+                return StatusCode(404, "Pregunta no encontrada");
+            }
+
+            MiniJuegoFactory factory = new MiniJuegoFactory(_context);
+            IMiniJuego? juego = factory.GenerarMiniJuego(pregunta.Tipo);
+
+            if (juego == null)
+            {
+                return BadRequest(new { Mensaje = $"El tipo {pregunta.Tipo} no es valido" });
+            }            
+
+            ResultadoValidacion resultValid = juego.ValidarRespuesta(pregunta, dto.Respuesta);
+
+            //ValidacionResponseDTO validacionResponseDTO = new ValidacionResponseDTO(); // esto por ahora es para poder poner algo que devuelve
+            ValidacionResponseDTO validacionResponseDTO = new ValidacionResponseDTO 
+            {
+                EsCorrecta = resultValid.EsCorrecta,
+                Mensaje = resultValid.Mensaje,
+                RespuestaCorrecta = resultValid.RespuestaCorrecta,
+                TipoMiniJuego = pregunta.Tipo,
+
+            };
+
+            return validacionResponseDTO;
+        }
     }
 }

@@ -92,6 +92,13 @@ namespace MinijuegosAPI.Services{
         {
             public int[] SecuenciaNumeros { get; set; } = Array.Empty<int>();
             public string Pregunta { get; set; } = "";
-        }     
+        }
+
+        public ResultadoValidacion ValidarRespuesta(Pregunta preg, string respuestaUsuario) 
+        { 
+            ResultadoValidacion resultadoValidacion = new ResultadoValidacion();
+            return resultadoValidacion;
+        }
+
     }
 }
