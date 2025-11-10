@@ -96,8 +96,107 @@ namespace MinijuegosAPI.Services
 
         public ResultadoValidacion ValidarRespuesta(Pregunta preg, string respuestaUsuario)
         {
+            CuerpoMemoria? cuerpoPregMemoria = JsonSerializer.Deserialize<CuerpoMemoria>(preg.CuerpoPregunta);
+            string? codigoPregunta = preg.Codigo;
+            int[] ints = cuerpoPregMemoria.SecuenciaNumeros;           
+
+            bool respuestaUsuarioBooleada = respuestaUsuario == "Si" ? true : false;
+
+            bool respCorrecta = false;
+
+            switch (codigoPregunta)
+            {
+                case "2PARES":
+                    respCorrecta = DosNumerosPares(ints);
+                    break;
+
+                case "2IMPARES":
+                    respCorrecta = DosNumerosImpares(ints);
+                    break;
+
+                case "SUMATODOMAYOR50":
+                    respCorrecta = SumaMayorA50(ints);
+                    break;
+
+                case "ALGUNO_MENOR10":
+                    respCorrecta = AlgunMenorA10(ints);
+                    break;
+
+                case "2IGUALES":
+                    respCorrecta = DosNumerosIguales(ints);
+                    break;               
+            }
+
             ResultadoValidacion resultadoValidacion = new ResultadoValidacion();
+            resultadoValidacion.EsCorrecta = respuestaUsuarioBooleada == respCorrecta;
+            resultadoValidacion.Mensaje = respuestaUsuarioBooleada == respCorrecta ? "Bien Maquina del mal, tas re sarpado" : "No viejita, le erraste, seguí intentando";
+            resultadoValidacion.RespuestaCorrecta = respCorrecta == true ? "Si" : "No";          
+
             return resultadoValidacion;
+        }
+
+        public static bool SumaMayorA50(int[] numeros)
+        {
+            return (numeros[0] + numeros[1] + numeros[2] + numeros[3] + numeros[4]) > 50;
+        }
+
+        public static bool DosNumerosPares(int[] nums)
+        {
+            int pares = 0;
+
+            foreach (int num in nums)
+            {
+                if ((num % 2) == 0)
+                {
+                    pares++;
+                }
+            }
+
+            return pares == 2;
+        }
+
+        public static bool DosNumerosIguales(int[] nums)
+        {
+            int iguales = 0;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                for (int j = 0; j < nums.Length; j++)
+                {
+                    if (i != j && nums[i] == nums[j])
+                    {
+                        iguales++;
+                    }
+                }
+            }
+            return iguales >= 2;
+        }
+
+        public static bool AlgunMenorA10(int[] nums)
+        {
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] < 10)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool DosNumerosImpares(int[] nums)
+        {
+            int impares = 0;
+
+            foreach (int num in nums)
+            {
+                if ((num % 2) != 0)
+                {
+                    impares++;
+                }
+            }
+
+            return impares == 2;
         }
     }
 }
