@@ -1,10 +1,11 @@
-﻿using MinijuegosAPI.Interfaces;
-using MinijuegosAPI.Models;
-using MinijuegosAPI.DTOs;
-using System.Text.Json;
-using System.Data;
+﻿using Microsoft.EntityFrameworkCore;
 using MinijuegosAPI.Data;
-using Microsoft.EntityFrameworkCore;
+using MinijuegosAPI.DTOs;
+using MinijuegosAPI.Interfaces;
+using MinijuegosAPI.Models;
+using System.Data;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace MinijuegosAPI.Services{
     
@@ -90,7 +91,10 @@ namespace MinijuegosAPI.Services{
         //sub clase anidada
         public class CuerpoLogica
         {
+            [JsonPropertyName("secuenciaNumeros")]
             public int[] SecuenciaNumeros { get; set; } = Array.Empty<int>();
+
+            [JsonPropertyName("pregunta")]
             public string Pregunta { get; set; } = "";
         }
 

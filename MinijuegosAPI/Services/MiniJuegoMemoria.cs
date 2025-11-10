@@ -3,6 +3,7 @@ using MinijuegosAPI.DTOs;
 using MinijuegosAPI.Interfaces;
 using MinijuegosAPI.Models;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace MinijuegosAPI.Services
 {
@@ -90,19 +91,27 @@ namespace MinijuegosAPI.Services
         //sub clase anidada
         public class CuerpoMemoria
         {
+            [JsonPropertyName("secuenciaNumeros")]
             public int[] SecuenciaNumeros { get; set; } = Array.Empty<int>();
+            [JsonPropertyName("pregunta")]
             public string Pregunta { get; set; } = "";
         }
 
         public ResultadoValidacion ValidarRespuesta(Pregunta preg, string respuestaUsuario)
         {
             CuerpoMemoria? cuerpoPregMemoria = JsonSerializer.Deserialize<CuerpoMemoria>(preg.CuerpoPregunta);
+
             string? codigoPregunta = preg.Codigo;
             int[] ints = cuerpoPregMemoria.SecuenciaNumeros;           
 
-            bool respuestaUsuarioBooleada = respuestaUsuario == "Si" ? true : false;
+            respuestaUsuario = respuestaUsuario.Trim().ToLower();
+            respuestaUsuario = respuestaUsuario == "sí" ? "si" : respuestaUsuario; // chequeo por si viene con tilde
+            bool respuestaUsuarioBooleada = respuestaUsuario == "si" ? true : false;
 
             bool respCorrecta = false;
+
+
+            Console.WriteLine($"[VALIDAR] id={preg.Id} codigo={codigoPregunta} numeros=[{string.Join(",", ints)}]");
 
             switch (codigoPregunta)
             {
@@ -137,7 +146,18 @@ namespace MinijuegosAPI.Services
 
         public static bool SumaMayorA50(int[] numeros)
         {
-            return (numeros[0] + numeros[1] + numeros[2] + numeros[3] + numeros[4]) > 50;
+            if (numeros == null || numeros.Length == 0)
+            { 
+                return false; // como por las dudas
+            }
+
+            int suma = 0;
+            foreach (int num in numeros)
+            {
+                suma += num;
+            }
+
+            return suma > 50;
         }
 
         public static bool DosNumerosPares(int[] nums)
