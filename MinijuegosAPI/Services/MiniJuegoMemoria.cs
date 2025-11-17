@@ -108,10 +108,7 @@ namespace MinijuegosAPI.Services
             respuestaUsuario = respuestaUsuario == "sí" ? "si" : respuestaUsuario; // chequeo por si viene con tilde
             bool respuestaUsuarioBooleada = respuestaUsuario == "si" ? true : false;
 
-            bool respCorrecta = false;
-
-
-            Console.WriteLine($"[VALIDAR] id={preg.Id} codigo={codigoPregunta} numeros=[{string.Join(",", ints)}]");
+            bool respCorrecta = false;            
 
             switch (codigoPregunta)
             {

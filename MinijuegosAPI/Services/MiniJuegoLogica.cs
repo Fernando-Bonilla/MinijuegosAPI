@@ -106,11 +106,9 @@ namespace MinijuegosAPI.Services{
             string? codigoPregunta = preg.Codigo;
 
             respuestaUsuario = respuestaUsuario.Trim().ToLower();            
-            bool respuestaUsuarioBooleada = respuestaUsuario == "si" ? true : false;
+            bool respuestaUsuarioBooleada = respuestaUsuario == "verdadero" ? true : false;
 
-            bool respCorrecta = false;
-
-            Console.WriteLine($"[VALIDAR] id={preg.Id} codigo={codigoPregunta} numeros=[{string.Join(",", ints)}]");
+            bool respCorrecta = false;            
 
             switch (codigoPregunta)
             {
@@ -138,7 +136,7 @@ namespace MinijuegosAPI.Services{
             ResultadoValidacion resultadoValidacion = new ResultadoValidacion();
             resultadoValidacion.EsCorrecta = respuestaUsuarioBooleada == respCorrecta;
             resultadoValidacion.Mensaje = respuestaUsuarioBooleada == respCorrecta ? "Bien Maquina del mal, tas re sarpado" : "No viejita, le erraste, seguí intentando";
-            resultadoValidacion.RespuestaCorrecta = respCorrecta == true ? "Si" : "No";
+            resultadoValidacion.RespuestaCorrecta = respCorrecta == true ? "Verdadero" : "Falso";
 
             return resultadoValidacion;
             
