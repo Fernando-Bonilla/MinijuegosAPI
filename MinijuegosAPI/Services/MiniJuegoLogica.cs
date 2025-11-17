@@ -99,10 +99,110 @@ namespace MinijuegosAPI.Services{
         }
 
         public ResultadoValidacion ValidarRespuesta(Pregunta preg, string respuestaUsuario) 
-        { 
+        {
+            CuerpoLogica? cuerpoLogica = JsonSerializer.Deserialize<CuerpoLogica>(preg.CuerpoPregunta);
+
+            int[] ints = cuerpoLogica.SecuenciaNumeros;
+            string? codigoPregunta = preg.Codigo;
+
+            respuestaUsuario = respuestaUsuario.Trim().ToLower();            
+            bool respuestaUsuarioBooleada = respuestaUsuario == "si" ? true : false;
+
+            bool respCorrecta = false;
+
+            Console.WriteLine($"[VALIDAR] id={preg.Id} codigo={codigoPregunta} numeros=[{string.Join(",", ints)}]");
+
+            switch (codigoPregunta)
+            {
+                case "2PARES":
+                    respCorrecta = ExactDosNumerosPares(ints);
+                    break;
+
+                case "SUMA_PAR":
+                    respCorrecta = LaSumaEsPar(ints);
+                    break;
+
+                case "MAYOR_SUMA_OTROS":
+                    respCorrecta = MayorQueSumaDeLosOtros(ints);
+                    break;
+
+                case "ALGUNO_MAYOR50":
+                    respCorrecta = AlMenosUnoMayorA50(ints);
+                    break;
+
+                case "TODOS_DIFERENTES":
+                    respCorrecta = TodosDiferentes(ints);
+                    break;
+            }
+
             ResultadoValidacion resultadoValidacion = new ResultadoValidacion();
+            resultadoValidacion.EsCorrecta = respuestaUsuarioBooleada == respCorrecta;
+            resultadoValidacion.Mensaje = respuestaUsuarioBooleada == respCorrecta ? "Bien Maquina del mal, tas re sarpado" : "No viejita, le erraste, seguí intentando";
+            resultadoValidacion.RespuestaCorrecta = respCorrecta == true ? "Si" : "No";
+
             return resultadoValidacion;
+            
         }
+
+        public static bool ExactDosNumerosPares(int[] nums)
+        {
+            int pares = 0;
+
+            foreach (int num in nums)
+            {
+                if ((num % 2) == 0)
+                {
+                    pares++;
+                }
+            }
+
+            return pares == 2;
+        }
+
+        public static bool LaSumaEsPar(int[] nums)
+        {
+            int suma = 0;
+
+            foreach (int num in nums)
+            {
+                suma += num;
+            }
+            return ((suma % 2) == 0);
+        }
+
+        public static bool MayorQueSumaDeLosOtros(int[] nums)
+        {
+            if (nums[0] > nums[1] && nums[0] > nums[2])
+                return (nums[0] > nums[1] + nums[2]);
+
+            if (nums[1] > nums[0] && nums[1] > nums[2])
+                return (nums[1] > nums[0] + nums[2]);
+
+            if (nums[2] > nums[0] && nums[2] > nums[1])
+                return (nums[2] > nums[0] + nums[1]);
+
+            return false;
+        }
+
+        public static bool AlMenosUnoMayorA50(int[] nums)
+        {
+            if (nums[0] > 50)
+                return true;
+
+            if (nums[1] > 50)
+                return true;
+
+            if (nums[2] > 50)
+                return true;
+
+            return false;
+        }
+
+        public static bool TodosDiferentes(int[] nums)
+        {
+            return (nums[0] != nums[1] && nums[1] != nums[2] && nums[0] != nums[2]);
+        }
+
 
     }
 }

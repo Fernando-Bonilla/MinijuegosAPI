@@ -153,7 +153,6 @@ namespace MinijuegosAPI.Controllers
                 Mensaje = resultValid.Mensaje,
                 RespuestaCorrecta = resultValid.RespuestaCorrecta,
                 TipoMiniJuego = pregunta.Tipo,
-
             };
 
             return validacionResponseDTO;

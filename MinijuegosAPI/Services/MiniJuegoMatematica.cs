@@ -26,8 +26,8 @@ namespace MinijuegosAPI.Services
                 Pregunta = juego.Pregunta
             };
 
-            //string json = JsonSerializer.Serialize( cuerpoPregunta, new JsonSerializerOptions());
-            string json = JsonSerializer.Serialize(cuerpoPregunta, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }); // esto me facilita el tema del case sensitive
+            string json = JsonSerializer.Serialize( cuerpoPregunta, new JsonSerializerOptions());
+            //string json = JsonSerializer.Serialize(cuerpoPregunta, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }); // esto me facilita el tema del case sensitive
 
             Pregunta pregunta = new Pregunta
             {
