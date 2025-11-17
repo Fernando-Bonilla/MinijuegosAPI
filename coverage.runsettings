@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat Code Coverage">
+        <Configuration>
+
+          <!-- Excluir archivos del coverage -->
+          <ExcludeByFile>
+            **/Program.cs;
+            **/WeatherForecast.cs;
+            **/Migrations/*.cs;
+            **/Data/ApplicationDbContext.cs
+          </ExcludeByFile>
+
+           <!-- Excluir por nombre de tipo/namespace -->
+           <Exclude>
+            [MinijuegosAPI]*Program;
+            [MinijuegosAPI]*WeatherForecast*;
+            [MinijuegosAPI]*Migrations.*;
+            [MinijuegosAPI]*ApplicationDbContext*
+          </Exclude>
+
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>
