@@ -14,9 +14,11 @@ namespace MinijuegosAPI.Controllers
     public class MinijuegosController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public MinijuegosController(ApplicationDbContext context)
+        private readonly IMiniJuegoFactory _factory;
+        public MinijuegosController(ApplicationDbContext context, IMiniJuegoFactory factory)
         {
             _context = context;
+            _factory = factory;
         }        
 
         [HttpGet("pregunta")]
@@ -27,8 +29,10 @@ namespace MinijuegosAPI.Controllers
                 return BadRequest(new { Mensaje = "El Parametro tipo es requerido" });
             }
 
-            MiniJuegoFactory factory = new MiniJuegoFactory(_context); // aca ocurre la magia, el factory esta acaaaaaa
-            IMiniJuego juego = factory.GenerarMiniJuego(tipo);
+            //MiniJuegoFactory factory = new MiniJuegoFactory(_context); 
+            //IMiniJuego juego = factory.GenerarMiniJuego(tipo);
+            IMiniJuego juego = _factory.GenerarMiniJuego(tipo);
+
 
             if (juego == null)
             {
@@ -136,8 +140,8 @@ namespace MinijuegosAPI.Controllers
                 return StatusCode(404, "Pregunta no encontrada");
             }
 
-            MiniJuegoFactory factory = new MiniJuegoFactory(_context);
-            IMiniJuego? juego = factory.GenerarMiniJuego(pregunta.Tipo);
+            //MiniJuegoFactory factory = new MiniJuegoFactory(_context);
+            IMiniJuego? juego = _factory.GenerarMiniJuego(pregunta.Tipo);
 
             if (juego == null)
             {
