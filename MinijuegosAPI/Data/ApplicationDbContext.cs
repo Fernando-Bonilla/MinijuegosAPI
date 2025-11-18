@@ -1,9 +1,11 @@
-﻿using MinijuegosAPI;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using MinijuegosAPI;
 using MinijuegosAPI.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace MinijuegosAPI.Data
 {
+    [ExcludeFromCodeCoverage]
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions options) : base(options) 
