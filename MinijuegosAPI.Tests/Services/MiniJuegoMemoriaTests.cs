@@ -11,19 +11,10 @@ using System.Text.Json;
 namespace MinijuegosAPI.Tests.Services
 {
     public class MiniJuegoMemoriaTests
-    {
-        /*[Fact]
-        public void Crear_Juego_Tipo_Memoria()
-        {
-            JuegoMemoriaDTO juego = MiniJuegoMemoria.CrearJuegoDeMemoria();
-
-            // Assert
-            Assert.NotNull(juego);
-            Assert.Equal("Memoria", juego.TipoPregunta);            
-        }*/
+    {       
 
         [Fact]
-        public void Crear_Juego_Memoria_Deberia_Numeros_Rango_1_Al_50()
+        public void Crear_Juego_Memoria_Genera_Numeros_Rango_1_Al_50()
         {
             JuegoMemoriaDTO juego = MiniJuegoMemoria.CrearJuegoDeMemoria();
 
@@ -35,7 +26,7 @@ namespace MinijuegosAPI.Tests.Services
         }
 
         [Fact]
-        public void Crear_Juego_Memoria_Deberia_Setear_Tipo_Pregunta_Y_Codigos()
+        public void Crear_Juego_Memoria_Setea_Tipo_Pregunta_Y_Codigos()
         {
             JuegoMemoriaDTO juego = MiniJuegoMemoria.CrearJuegoDeMemoria();
 
