@@ -52,15 +52,15 @@ namespace MinijuegosAPI.Tests.Services
 
             MiniJuegoMatematica miniJuego = new MiniJuegoMatematica(null!);
 
-            string respuestaUsuario = "10";
+            string respuestaUsuario = "6"; // aca la version correcta
 
             // Act
             ResultadoValidacion resultado = miniJuego.ValidarRespuesta(preg, respuestaUsuario);
 
             // Assert
-            Assert.False(resultado.EsCorrecta);
+            Assert.True(resultado.EsCorrecta);
             Assert.Equal("6", resultado.RespuestaCorrecta);
-            Assert.Equal("No viejita, le erraste, seguí intentando", resultado.Mensaje);
+            Assert.Equal("Bien Maquina del mal, tas re sarpado", resultado.Mensaje);
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace MinijuegosAPI.Tests.Services
             // Arrange
             MiniJuegoMatematica.CuerpoMatematica cuerpo = new MiniJuegoMatematica.CuerpoMatematica
             {
-                SecuenciaNumeros = new[] { 1, 2, 3 }, // suma = 6
+                SecuenciaNumeros = new[] { 1, 2, 3 }, 
                 Pregunta = "Cual es la suma de todos los numeros"
             };
 
@@ -83,7 +83,7 @@ namespace MinijuegosAPI.Tests.Services
 
             MiniJuegoMatematica miniJuego = new MiniJuegoMatematica(null!);
 
-            string respuestaUsuario = "10"; // incorrecta
+            string respuestaUsuario = "10"; // incorrectoooooooooooooooooooo
 
             // Act
             ResultadoValidacion resultado = miniJuego.ValidarRespuesta(preg, respuestaUsuario);
