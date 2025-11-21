@@ -56,8 +56,6 @@ namespace MinijuegosAPI.Controllers
 
         public static object mapearDTOcorrecto(Pregunta p)
         {
-            //CuerpoLogica cuerpoPreg = JsonSerializer.Deserialize<CuerpoLogica>(p.CuerpoPregunta);
-
             if(p.Tipo == "Logica")
             {
                 CuerpoLogica cuerpoPreg = JsonSerializer.Deserialize<CuerpoLogica>(p.CuerpoPregunta);

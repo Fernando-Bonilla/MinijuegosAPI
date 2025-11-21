@@ -1,5 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace MinijuegosAPI
 {
+    [ExcludeFromCodeCoverage]
+
     public class WeatherForecast
     {
         public DateOnly Date { get; set; }

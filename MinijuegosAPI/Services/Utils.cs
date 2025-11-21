@@ -6,6 +6,11 @@ namespace MinijuegosAPI.Services
     {
         public static bool ValidarEntradaRespuesta(Pregunta pregunta, string respuesta) 
         {
+            if(respuesta == null)
+            {
+                return false;
+            }
+
             respuesta = respuesta.Trim().ToLower();
 
             switch (pregunta.Tipo)
