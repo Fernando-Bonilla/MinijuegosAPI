@@ -106,7 +106,7 @@ namespace MinijuegosAPI.Services{
             string? codigoPregunta = preg.Codigo;
 
             respuestaUsuario = respuestaUsuario.Trim().ToLower();            
-            bool respuestaUsuarioBooleada = respuestaUsuario == "verdadero" ? true : false;
+            bool respuestaUsuarioBooleada = respuestaUsuario == "verdadero" || respuestaUsuario == "true";
 
             bool respCorrecta = false;            
 
