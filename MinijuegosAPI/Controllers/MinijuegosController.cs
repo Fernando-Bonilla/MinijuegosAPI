@@ -148,6 +148,16 @@ namespace MinijuegosAPI.Controllers
                 return BadRequest(new { Mensaje = $"El tipo {pregunta.Tipo} no es valido" });
             }            
 
+            if(dto.Respuesta == null)
+            {
+                return BadRequest(new { Mensaje = $"La respuesta no puede ser nula" });
+            }
+
+            if(!Utils.ValidarEntradaRespuesta(pregunta, dto.Respuesta))
+            {
+                return BadRequest(new { Mensaje = "Respuesta invalida" });
+            }
+
             ResultadoValidacion resultValid = juego.ValidarRespuesta(pregunta, dto.Respuesta);
 
             //ValidacionResponseDTO validacionResponseDTO = new ValidacionResponseDTO(); // esto por ahora es para poder poner algo que devuelve

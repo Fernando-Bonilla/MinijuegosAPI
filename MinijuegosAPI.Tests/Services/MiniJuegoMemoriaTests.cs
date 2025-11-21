@@ -254,7 +254,7 @@ namespace MinijuegosAPI.Tests.Services
         [InlineData("nO", false)]
         [InlineData("false", false)]
         [InlineData("FalSe", false)]
-
+        
         public void Validar_Respuesta_Soporta_Si_True_No_False_En_Config_Diferentes(string respuestaUsuario, bool respEsperada)
         {
             // Arrange
