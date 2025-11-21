@@ -14,7 +14,7 @@ namespace MinijuegosAPI.Data
 
         // aca agregar las tablas a mapear
 
-        public DbSet<Pregunta> Preguntas { get; set; }
+        public virtual DbSet<Pregunta> Preguntas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,11 @@ namespace MinijuegosAPI.Data
                 .HasKey(p => p.Id);
 
 
+        }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
         }
     }
 
