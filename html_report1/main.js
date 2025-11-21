@@ -213,7 +213,7 @@ var assemblies = [
   {
     "name": "MinijuegosAPI",
     "classes": [
-      { "name": "MinijuegosAPI.Controllers.MinijuegosController", "rp": "MinijuegosAPI_MinijuegosController.html", "cl": 18, "ucl": 70, "cal": 88, "tl": 165, "cb": 6, "tb": 20, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "MinijuegosAPI.Controllers.MinijuegosController", "rp": "MinijuegosAPI_MinijuegosController.html", "cl": 18, "ucl": 76, "cal": 94, "tl": 175, "cb": 6, "tb": 24, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "MinijuegosAPI.DTOs.JuegoLogicaDTO", "rp": "MinijuegosAPI_JuegoLogicaDTO.html", "cl": 8, "ucl": 0, "cal": 8, "tl": 19, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "MinijuegosAPI.DTOs.JuegoLogicaResponseDTO", "rp": "MinijuegosAPI_JuegoLogicaResponseDTO.html", "cl": 0, "ucl": 5, "cal": 5, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "MinijuegosAPI.DTOs.JuegoMatematicaDTO", "rp": "MinijuegosAPI_JuegoMatematicaDTO.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -224,9 +224,10 @@ var assemblies = [
       { "name": "MinijuegosAPI.Models.Pregunta", "rp": "MinijuegosAPI_Pregunta.html", "cl": 4, "ucl": 1, "cal": 5, "tl": 11, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "MinijuegosAPI.Models.ResultadoValidacion", "rp": "MinijuegosAPI_ResultadoValidacion.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "MinijuegosAPI.Services.MiniJuegoFactory", "rp": "MinijuegosAPI_MiniJuegoFactory.html", "cl": 19, "ucl": 2, "cal": 21, "tl": 44, "cb": 7, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "MinijuegosAPI.Services.MiniJuegoLogica", "rp": "MinijuegosAPI_MiniJuegoLogica.html", "cl": 75, "ucl": 39, "cal": 114, "tl": 206, "cb": 37, "tb": 54, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "MinijuegosAPI.Services.MiniJuegoLogica", "rp": "MinijuegosAPI_MiniJuegoLogica.html", "cl": 75, "ucl": 39, "cal": 114, "tl": 206, "cb": 36, "tb": 54, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "MinijuegosAPI.Services.MiniJuegoMatematica", "rp": "MinijuegosAPI_MiniJuegoMatematica.html", "cl": 33, "ucl": 17, "cal": 50, "tl": 99, "cb": 4, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "MinijuegosAPI.Services.MiniJuegoMemoria", "rp": "MinijuegosAPI_MiniJuegoMemoria.html", "cl": 98, "ucl": 35, "cal": 133, "tl": 220, "cb": 42, "tb": 54, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "MinijuegosAPI.Services.MiniJuegoMemoria", "rp": "MinijuegosAPI_MiniJuegoMemoria.html", "cl": 95, "ucl": 38, "cal": 133, "tl": 225, "cb": 38, "tb": 54, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "MinijuegosAPI.Services.Utils", "rp": "MinijuegosAPI_Utils.html", "cl": 0, "ucl": 17, "cal": 17, "tl": 43, "cb": 0, "tb": 26, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "MinijuegosAPI.WeatherForecast", "rp": "MinijuegosAPI_WeatherForecast.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Program", "rp": "MinijuegosAPI_Program.html", "cl": 0, "ucl": 16, "cal": 16, "tl": 36, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
@@ -243,13 +244,19 @@ var riskHotspotMetrics = [
 
 var riskHotspots = [
   {
-    "assembly": "MinijuegosAPI", "class": "MinijuegosAPI.Controllers.MinijuegosController", "reportPath": "MinijuegosAPI_MinijuegosController.html", "methodName": "mapearDTOcorrecto(MinijuegosAPI.Models.Pregunta)", "methodShortName": "mapearDTOcorrecto(...)", "fileIndex": 0, "line": 58,
+    "assembly": "MinijuegosAPI", "class": "MinijuegosAPI.Services.Utils", "reportPath": "MinijuegosAPI_Utils.html", "methodName": "ValidarEntradaRespuesta(MinijuegosAPI.Models.Pregunta,System.String)", "methodShortName": "ValidarEntradaRespuesta(...)", "fileIndex": 0, "line": 8,
     "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
+      { "value": 702, "exceeded": true },
+      { "value": 26, "exceeded": true },
     ]},
   {
     "assembly": "MinijuegosAPI", "class": "MinijuegosAPI.Controllers.MinijuegosController", "reportPath": "MinijuegosAPI_MinijuegosController.html", "methodName": "Validar(MinijuegosAPI.DTOs.ValidacionRequestDTO)", "methodShortName": "Validar(...)", "fileIndex": 0, "line": 129,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "MinijuegosAPI", "class": "MinijuegosAPI.Controllers.MinijuegosController", "reportPath": "MinijuegosAPI_MinijuegosController.html", "methodName": "mapearDTOcorrecto(MinijuegosAPI.Models.Pregunta)", "methodShortName": "mapearDTOcorrecto(...)", "fileIndex": 0, "line": 58,
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },
