@@ -1,7 +1,10 @@
-﻿namespace MinijuegosAPI.DTOs
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace MinijuegosAPI.DTOs
 {
     public class JuegoLogicaDTO
     {
+        [ExcludeFromCodeCoverage]
         public int Id { get; set; }
         public string TipoPregunta { get; set; }
         public int[] Secuencia { get; set; } = new int[3];

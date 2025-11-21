@@ -1,5 +1,8 @@
-﻿namespace MinijuegosAPI.DTOs
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace MinijuegosAPI.DTOs
 {
+    [ExcludeFromCodeCoverage]
     public class ValidacionResponseDTO
     {
         public bool EsCorrecta {  get; set; }

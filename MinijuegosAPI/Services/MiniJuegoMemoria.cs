@@ -106,7 +106,8 @@ namespace MinijuegosAPI.Services
 
             respuestaUsuario = respuestaUsuario.Trim().ToLower();
             respuestaUsuario = respuestaUsuario == "sí" ? "si" : respuestaUsuario; // chequeo por si viene con tilde
-            bool respuestaUsuarioBooleada = respuestaUsuario == "si" ? true : false;
+
+            bool respuestaUsuarioBooleada = respuestaUsuario == "si" || respuestaUsuario == "true";
 
             bool respCorrecta = false;            
 

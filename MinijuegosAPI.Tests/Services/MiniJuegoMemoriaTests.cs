@@ -243,7 +243,48 @@ namespace MinijuegosAPI.Tests.Services
             Assert.Equal("No viejita, le erraste, seguí intentando", resultado.Mensaje);
         }
 
+        [Theory]
+        [InlineData("si", true)]
+        [InlineData("Si", true)]
+        [InlineData("sí", true)]
+        [InlineData("Sí", true)]
+        [InlineData("true", true)]
+        [InlineData("TrUe", true)]
+        [InlineData("no", false)]
+        [InlineData("nO", false)]
+        [InlineData("false", false)]
+        [InlineData("FalSe", false)]
 
+        public void Validar_Respuesta_Soporta_Si_True_No_False_En_Config_Diferentes(string respuestaUsuario, bool respEsperada)
+        {
+            // Arrange
+            MiniJuegoMemoria.CuerpoMemoria cuerpo = new MiniJuegoMemoria.CuerpoMemoria
+            {
+                SecuenciaNumeros = new[] { 20, 90, 20 },
+                Pregunta = "¿La suma de todos los números superaba 50?"
+            };
+
+            string json = JsonSerializer.Serialize(cuerpo);
+
+            Pregunta preg = new Pregunta
+            {
+                Tipo = "Memoria",
+                Codigo = "SUMATODOMAYOR50",
+                CuerpoPregunta = json
+            };
+
+            MiniJuegoMemoria miniJuego = new MiniJuegoMemoria(null!);
+
+            //Act
+
+            ResultadoValidacion res = miniJuego.ValidarRespuesta(preg, respuestaUsuario);
+
+            //Assert
+
+            Assert.Equal(res.EsCorrecta, respEsperada);
+            
+        }
     }
+    
 
 }
