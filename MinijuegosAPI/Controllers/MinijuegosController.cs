@@ -49,77 +49,9 @@ namespace MinijuegosAPI.Controllers
             // aca no me dio la cabeza para hacer el strategy y para poder devolver un solo tipo de dto acorde al tipo de pregunta arme el metodo mapear, que arma el dto
             // con los datos que precisa la vista y lo devolvemos como objeto nomas.
             // Despues habria que hacerlo bien pero por ahora es un strategy rustico como la tota Lugano
-            object dto = mapearDTOcorrecto(pregunta);
+            object dto = Utils.mapearDTOcorrecto(pregunta);
 
             return Ok(dto);
-        }
-
-        public static object mapearDTOcorrecto(Pregunta p)
-        {
-            if(p.Tipo == "Logica")
-            {
-                CuerpoLogica cuerpoPreg = JsonSerializer.Deserialize<CuerpoLogica>(p.CuerpoPregunta);
-
-                JuegoLogicaResponseDTO juegoLogicaRes = new JuegoLogicaResponseDTO
-                {
-                    Id = p.Id,
-                    TipoPregunta = p.Tipo,
-                    Secuencia = cuerpoPreg.SecuenciaNumeros,
-                    Pregunta = cuerpoPreg.Pregunta,
-                    CodigoPregunta = p.Codigo,
-                    FechaCreacion = p.FechaCreacion,
-                    
-                };
-
-                return juegoLogicaRes;
-            }
-            else if (p.Tipo == "Memoria")
-            {
-                CuerpoLogica cuerpoPreg = JsonSerializer.Deserialize<CuerpoLogica>(p.CuerpoPregunta);
-
-                JuegoMemoriaResponseDTO juegoMemoriaRes = new JuegoMemoriaResponseDTO
-                {
-                    Id = p.Id,
-                    TipoPregunta = p.Tipo,
-                    Secuencia = cuerpoPreg.SecuenciaNumeros,
-                    Pregunta = cuerpoPreg.Pregunta,
-                    CodigoPregunta = p.Codigo,
-                    FechaCreacion = p.FechaCreacion,
-                };
-
-                return juegoMemoriaRes;
-            }
-            else if(p.Tipo == "Matematica")
-            {
-                CuerpoLogica cuerpoPreg = JsonSerializer.Deserialize<CuerpoLogica>(p.CuerpoPregunta);
-
-                JuegoMatematicaResponseDTO juegoMatematicaRes = new JuegoMatematicaResponseDTO
-                {
-                    Id = p.Id,
-                    TipoPregunta = p.Tipo,
-                    Secuencia = cuerpoPreg.SecuenciaNumeros,
-                    Pregunta = cuerpoPreg.Pregunta,                    
-                    FechaCreacion = p.FechaCreacion,
-                };
-
-                return juegoMatematicaRes;
-
-            }
-
-            else
-            {
-                return new { };
-            }
-        }
-       
-        // clase anidada aca para poder deserealizar el cuerpo de la preg y armar el dto que corresponde para mandar a la vista
-        public class CuerpoLogica
-        {
-            [JsonPropertyName("secuenciaNumeros")]
-            public int[] SecuenciaNumeros { get; set; } = Array.Empty<int>();
-
-            [JsonPropertyName("pregunta")]
-            public string Pregunta { get; set; } = "";
         }
 
         [HttpPost("Validar")]

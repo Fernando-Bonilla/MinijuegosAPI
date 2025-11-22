@@ -9,6 +9,7 @@ using MinijuegosAPI.Services;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace MinijuegosAPI.Tests.Controllers
 {
-    public  class MinijuegosControllerTest
+    public class MinijuegosControllerTest
     {
         [Fact]
         public void Pregunta_Sin_Tipo_Devuelve_BadRequest()
@@ -76,7 +77,7 @@ namespace MinijuegosAPI.Tests.Controllers
         }
 
         //cheaquear casos psoitivos
-        
+
         //[Fact]
         //public void Pregunta_Tipo_Correcto_Devuelve_Dto_Corresponiente_Json()
         //{
@@ -146,7 +147,32 @@ namespace MinijuegosAPI.Tests.Controllers
             Assert.Equal(500, errorResult.StatusCode);
         }
 
+        [Fact]
+        public void Validar_Pregunta_con_ID_BadRequest()
+        {
+            // Arrange
+            DbContextOptions<ApplicationDbContext> options =
+                new DbContextOptions<ApplicationDbContext>();
+            Mock<ApplicationDbContext> contextMock =
+                new Mock<ApplicationDbContext>(options);
+            Mock<IMiniJuegoFactory> factoryMock =
+                new Mock<IMiniJuegoFactory>();
+            MinijuegosController controller =
+                new MinijuegosController(contextMock.Object, factoryMock.Object);
+
+            ValidacionRequestDTO dto = new ValidacionRequestDTO
+            {
+                Id = 0,
+                Respuesta = "respuesta"
+            };
 
 
+            // Act
+            ActionResult<ValidacionResponseDTO> result = controller.Validar(dto);
+
+            // Assert
+            BadRequestObjectResult badResult =
+                Assert.IsType<BadRequestObjectResult>(result.Result);
+        }
     }
 }
