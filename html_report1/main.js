@@ -213,17 +213,14 @@ var assemblies = [
   {
     "name": "MinijuegosAPI",
     "classes": [
-      { "name": "MinijuegosAPI.Controllers.MinijuegosController", "rp": "MinijuegosAPI_MinijuegosController.html", "cl": 18, "ucl": 76, "cal": 94, "tl": 175, "cb": 6, "tb": 24, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "MinijuegosAPI.DTOs.JuegoMatematicaDTO", "rp": "MinijuegosAPI_JuegoMatematicaDTO.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "MinijuegosAPI.DTOs.JuegoMemoriaDTO", "rp": "MinijuegosAPI_JuegoMemoriaDTO.html", "cl": 9, "ucl": 0, "cal": 9, "tl": 20, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "MinijuegosAPI.DTOs.PreguntaMatematicaResponseDTO", "rp": "MinijuegosAPI_PreguntaMatematicaResponseDTO.html", "cl": 0, "ucl": 2, "cal": 2, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "MinijuegosAPI.Models.Pregunta", "rp": "MinijuegosAPI_Pregunta.html", "cl": 4, "ucl": 1, "cal": 5, "tl": 11, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "MinijuegosAPI.Controllers.MinijuegosController", "rp": "MinijuegosAPI_MinijuegosController.html", "cl": 23, "ucl": 26, "cal": 49, "tl": 105, "cb": 7, "tb": 18, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "MinijuegosAPI.Models.Pregunta", "rp": "MinijuegosAPI_Pregunta.html", "cl": 5, "ucl": 0, "cal": 5, "tl": 11, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "MinijuegosAPI.Models.ResultadoValidacion", "rp": "MinijuegosAPI_ResultadoValidacion.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "MinijuegosAPI.Services.MiniJuegoFactory", "rp": "MinijuegosAPI_MiniJuegoFactory.html", "cl": 19, "ucl": 2, "cal": 21, "tl": 44, "cb": 7, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "MinijuegosAPI.Services.MiniJuegoLogica", "rp": "MinijuegosAPI_MiniJuegoLogica.html", "cl": 72, "ucl": 42, "cal": 114, "tl": 206, "cb": 36, "tb": 54, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "MinijuegosAPI.Services.MiniJuegoLogica", "rp": "MinijuegosAPI_MiniJuegoLogica.html", "cl": 76, "ucl": 38, "cal": 114, "tl": 206, "cb": 39, "tb": 54, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "MinijuegosAPI.Services.MiniJuegoMatematica", "rp": "MinijuegosAPI_MiniJuegoMatematica.html", "cl": 33, "ucl": 17, "cal": 50, "tl": 99, "cb": 4, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "MinijuegosAPI.Services.MiniJuegoMemoria", "rp": "MinijuegosAPI_MiniJuegoMemoria.html", "cl": 98, "ucl": 35, "cal": 133, "tl": 225, "cb": 42, "tb": 54, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "MinijuegosAPI.Services.Utils", "rp": "MinijuegosAPI_Utils.html", "cl": 20, "ucl": 0, "cal": 20, "tl": 48, "cb": 28, "tb": 28, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "MinijuegosAPI.Services.MiniJuegoMemoria", "rp": "MinijuegosAPI_MiniJuegoMemoria.html", "cl": 95, "ucl": 38, "cal": 133, "tl": 225, "cb": 39, "tb": 54, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "MinijuegosAPI.Services.Utils", "rp": "MinijuegosAPI_Utils.html", "cl": 65, "ucl": 0, "cal": 65, "tl": 119, "cb": 34, "tb": 34, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Program", "rp": "MinijuegosAPI_Program.html", "cl": 0, "ucl": 16, "cal": 16, "tl": 36, "cb": 0, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];
@@ -239,19 +236,13 @@ var riskHotspotMetrics = [
 
 var riskHotspots = [
   {
-    "assembly": "MinijuegosAPI", "class": "MinijuegosAPI.Controllers.MinijuegosController", "reportPath": "MinijuegosAPI_MinijuegosController.html", "methodName": "Validar(MinijuegosAPI.DTOs.ValidacionRequestDTO)", "methodShortName": "Validar(...)", "fileIndex": 0, "line": 129,
+    "assembly": "MinijuegosAPI", "class": "MinijuegosAPI.Controllers.MinijuegosController", "reportPath": "MinijuegosAPI_MinijuegosController.html", "methodName": "Validar(MinijuegosAPI.DTOs.ValidacionRequestDTO)", "methodShortName": "Validar(...)", "fileIndex": 0, "line": 59,
     "metrics": [
-      { "value": 110, "exceeded": true },
+      { "value": 67, "exceeded": true },
       { "value": 10, "exceeded": false },
     ]},
   {
-    "assembly": "MinijuegosAPI", "class": "MinijuegosAPI.Controllers.MinijuegosController", "reportPath": "MinijuegosAPI_MinijuegosController.html", "methodName": "mapearDTOcorrecto(MinijuegosAPI.Models.Pregunta)", "methodShortName": "mapearDTOcorrecto(...)", "fileIndex": 0, "line": 58,
-    "metrics": [
-      { "value": 42, "exceeded": true },
-      { "value": 6, "exceeded": false },
-    ]},
-  {
-    "assembly": "MinijuegosAPI", "class": "MinijuegosAPI.Services.Utils", "reportPath": "MinijuegosAPI_Utils.html", "methodName": "ValidarEntradaRespuesta(MinijuegosAPI.Models.Pregunta,System.String)", "methodShortName": "ValidarEntradaRespuesta(...)", "fileIndex": 0, "line": 8,
+    "assembly": "MinijuegosAPI", "class": "MinijuegosAPI.Services.Utils", "reportPath": "MinijuegosAPI_Utils.html", "methodName": "ValidarEntradaRespuesta(MinijuegosAPI.Models.Pregunta,System.String)", "methodShortName": "ValidarEntradaRespuesta(...)", "fileIndex": 0, "line": 11,
     "metrics": [
       { "value": 28, "exceeded": false },
       { "value": 28, "exceeded": true },

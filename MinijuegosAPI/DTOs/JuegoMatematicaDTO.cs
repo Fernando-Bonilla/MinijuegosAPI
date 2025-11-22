@@ -2,9 +2,10 @@
 
 namespace MinijuegosAPI.DTOs
 {
+    [ExcludeFromCodeCoverage]
+
     public class JuegoMatematicaDTO
     {
-        [ExcludeFromCodeCoverage]
         public int Id { get; set; }
         public string TipoPregunta { get; set; }
         public int[] Secuencia { get; set; } = new int[3];

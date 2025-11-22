@@ -78,10 +78,13 @@ namespace MinijuegosAPI.Tests.Services
             Assert.False(resultado);
         }
 
-        [Fact]
-        public void Numero_Mayor_Que_La_Suma_De_Los_Otros_Devuelve_True()
+        [Theory]
+        [InlineData(10, 3, 3)]
+        [InlineData(3, 10, 3)]
+        [InlineData(3, 3, 10)]
+        public void Numero_Mayor_Que_La_Suma_De_Los_Otros_Devuelve_True(int num1, int num2, int num3)
         {
-            int[] nums = new int[] { 10, 3, 2 }; 
+            int[] nums = new int[] { num1, num2, num3 }; 
 
             bool resultado = MiniJuegoLogica.MayorQueSumaDeLosOtros(nums);
 
@@ -108,10 +111,13 @@ namespace MinijuegosAPI.Tests.Services
             Assert.False(resultado);
         }
 
-        [Fact]
-        public void Al_Menos_Uno_Es_Mayor_A_50_Devuelve_True()
+        [Theory]
+        [InlineData(51, 10, 20)]
+        [InlineData(10, 60, 20)]
+        [InlineData(10, 20, 80)]
+        public void Al_Menos_Uno_Es_Mayor_A_50_Devuelve_True(int num1, int num2, int num3)
         {
-            int[] nums = new int[] { 51, 10, 20 };
+            int[] nums = new int[] { num1, num2, num3 };
 
             bool resultado = MiniJuegoLogica.AlMenosUnoMayorA50(nums);
 
@@ -212,6 +218,8 @@ namespace MinijuegosAPI.Tests.Services
             Assert.Equal("Falso", resultado.RespuestaCorrecta);
             Assert.Equal("No viejita, le erraste, seguí intentando", resultado.Mensaje);
         }
+
+
 
 
     }

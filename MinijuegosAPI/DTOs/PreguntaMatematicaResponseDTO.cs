@@ -2,6 +2,8 @@
 
 namespace MinijuegosAPI.DTOs
 {
+    [ExcludeFromCodeCoverage]
+
     public class PreguntaMatematicaResponseDTO
     {
         [ExcludeFromCodeCoverage]
